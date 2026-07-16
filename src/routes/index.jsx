@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Layout from '../components/layout/Layout'
+import Layout from '../ui/layout/Layout'
 import Home from '../features/home/Home'
 import JobDetails from '../features/job-details/JobDetails'
 import SavedJobs from '../features/saved-jobs/SavedJobs'

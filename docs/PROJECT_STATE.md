@@ -36,6 +36,11 @@ Tracks **current status** of the job search website project.
   * Common components scaffolded (Button, Card, Input, Select, Badge, Loading, ErrorMessage, EmptyState)
   * Router configured with Layout, Home, JobDetails, SavedJobs routes
   * Build passes
+* Phase 2: Design System Implementation ✅
+  * Tailwind configured with color palette
+  * Typography set in Tailwind
+  * CSS custom properties created (`src/styles/design-tokens.css`)
+  * Common components built
 
 ---
 

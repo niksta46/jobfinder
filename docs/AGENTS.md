@@ -91,9 +91,9 @@ src/
 │   ├── job-details/        # Single job details page
 │   ├── saved-jobs/         # Saved/bookmarked jobs
 │   └── job-list/           # Job listing display
-├── components/
+├── ui/
 │   ├── layout/             # Layout, Header, Navigation
-│   └── common/             # Reusable UI components
+│   └── common/             # Reusable UI primitives
 ├── routes/                 # Router configuration
 ├── styles/                 # Global styles
 └── design-system/          # Design tokens

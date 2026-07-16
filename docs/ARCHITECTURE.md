@@ -38,10 +38,10 @@ src/
 │   ├── job-search/         # Job search with filters
 │   ├── job-details/        # Single job details page
 │   └── saved-jobs/         # Saved/bookmarked jobs
-├── components/
+├── ui/
 │   ├── layout/             # Layout, Header, Navigation
 │   │   └── Layout.jsx      # Main application layout
-│   └── common/             # Reusable UI components
+│   └── common/             # Reusable UI primitives
 │       ├── Card.jsx        # Job listing card
 │       ├── Input.jsx       # Search input
 │       ├── Select.jsx      # Dropdown filter

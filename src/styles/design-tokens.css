@@ -1,0 +1,39 @@
+/*
+  design-tokens.css
+  Purpose: CSS custom properties for design tokens.
+  Usage: Access values in JS (getComputedStyle), inline styles, or raw CSS.
+  Relationship: Same hex values as tailwind.config.js.
+    tailwind.config.js = for Tailwind utility classes in markup.
+    design-tokens.css = for CSS custom properties (non-Tailwind contexts).
+*/
+
+:root {
+  --color-primary-50: #EBF5FF;
+  --color-primary-100: #D6EBFF;
+  --color-primary-200: #ADD5FF;
+  --color-primary-300: #85BFFF;
+  --color-primary-400: #5CA8FF;
+  --color-primary-500: #338EFF;
+  --color-primary-600: #297ACC;
+  --color-primary-700: #1F5C99;
+  --color-primary-800: #154766;
+  --color-primary-900: #0B3333;
+
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4446;
+  --color-info: #3B82F6;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-default: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-default: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}

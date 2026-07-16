@@ -1,3 +1,12 @@
+/*
+  tailwind.config.js
+  Purpose: Defines custom design tokens so Tailwind utility classes work.
+  Usage: Write bg-primary-500, text-primary-700, font-sans in JSX.
+  Relationship: Same hex values as src/styles/design-tokens.css.
+    Tailwind config = for Tailwind utility classes in markup.
+    design-tokens.css = for CSS custom properties (JS access, inline styles).
+*/
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
