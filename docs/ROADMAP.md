@@ -76,12 +76,27 @@ Build job search with filters and results display.
 
 ### Tasks
 
-- [ ] Search input with category dropdown
-- [ ] Job listing cards (title, company, location, salary, type)
-- [ ] Filter bar (category, location, job type, date posted)
-- [ ] Sort options (date, relevance, salary)
-- [ ] Pagination / infinite scroll
-- [ ] Empty state for no results
+- [x] Search input with category dropdown
+- [x] Job listing cards (title, company, location, salary, type)
+- [x] Filter bar (category, location, job type, date posted)
+- [x] Sort options (date, relevance, salary)
+- [x] Pagination / infinite scroll
+- [x] Empty state for no results
+
+---
+
+## Phase 4.1: UX Improvements
+
+### Goal
+
+Polish search UX based on user feedback.
+
+### Tasks
+
+- [ ] Remove Search button — auto-filter on category/input change
+- [ ] Remove "Search" link from header nav (keep only Saved)
+- [ ] Show total job count + "X / Y displayed" in pagination
+- [ ] Sticky search bar + smaller hero text to reclaim space
 
 ---
 

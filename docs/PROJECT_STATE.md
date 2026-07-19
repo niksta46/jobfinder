@@ -41,15 +41,33 @@ Tracks **current status** of the job search website project.
   * Typography set in Tailwind
   * CSS custom properties created (`src/styles/design-tokens.css`)
   * Common components built
+* Phase 3: API Layer ✅
+  * API client created (`src/api/client.js`)
+  * TanStack Query configured in `main.jsx`
+  * Query keys defined (`src/api/queryKeys.js`)
+  * Hooks: useJobSearch, useJobDetails, useJSearch
+* Phase 4: Core Feature — Job Search ✅
+  * Search input with category dropdown
+  * Job listing cards with JobCard/JobList components
+  * Filter bar (job type, location)
+  * Sort options (date, relevance, salary)
+  * Pagination (10 per page)
+  * Empty state
 
 ---
 
 ## Pending Tasks
 
-See ROADMAP.md for detailed task list.
+* Phase 4.1: UX Improvements
+  * Remove Search button — auto-filter on category/input change
+  * Remove "Search" link from header nav
+  * Show total job count + "X / Y displayed" in pagination
+  * Sticky search bar + smaller hero text
+* Phase 5–8: See ROADMAP.md
 
 ---
 
 ## Notes
 
-* Project initialized — no code written yet
+* Remotive API ignores category/search params — all filtering done client-side
+* CORS fix: Content-Type header only sent on requests with a body
