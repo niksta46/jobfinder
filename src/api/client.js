@@ -2,9 +2,10 @@ const BASE_URL = import.meta.env.VITE_REMOTIVE_API_URL || 'https://remotive.com/
 
 export async function apiFetch(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`
+  const hasBody = options.method && options.method !== 'GET' && options.method !== 'HEAD'
   const response = await fetch(url, {
     headers: {
-      'Content-Type': 'application/json',
+      ...(hasBody ? { 'Content-Type': 'application/json' } : {}),
       ...options.headers,
     },
     ...options,

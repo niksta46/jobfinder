@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useJobSearch } from '../../api/endpoints/useJobSearch'
 import Input from '../../ui/common/Input'
@@ -8,15 +8,17 @@ import JobList from '../job-list/JobList'
 
 const categories = [
   { value: '', label: 'All Categories' },
-  { value: 'software-dev', label: 'Software Development' },
-  { value: 'design', label: 'Design' },
-  { value: 'marketing', label: 'Marketing' },
-  { value: 'sales', label: 'Sales' },
-  { value: 'customer-support', label: 'Customer Support' },
-  { value: 'data', label: 'Data / Analytics' },
-  { value: 'devops', label: 'DevOps / SysAdmin' },
-  { value: 'product', label: 'Product Management' },
-  { value: 'hr', label: 'HR / Recruitment' },
+  { value: 'Software Development', label: 'Software Development' },
+  { value: 'Marketing', label: 'Marketing' },
+  { value: 'Sales', label: 'Sales' },
+  { value: 'Customer Service', label: 'Customer Service' },
+  { value: 'Data and Analytics', label: 'Data / Analytics' },
+  { value: 'Devops', label: 'DevOps / SysAdmin' },
+  { value: 'Product Management', label: 'Product Management' },
+  { value: 'Quality Assurance', label: 'Quality Assurance' },
+  { value: 'Medical', label: 'Medical' },
+  { value: 'Artificial Intelligence', label: 'AI / ML' },
+  { value: 'Writing', label: 'Writing' },
 ]
 
 const jobTypes = [
@@ -39,12 +41,30 @@ function parseSalary(salaryStr) {
   return Number(numStr) || 0
 }
 
+const PAGE_SIZE = 10
+
 function applyFilters(jobs, filters) {
   let filtered = jobs
 
+  if (filters.query) {
+    const q = filters.query.toLowerCase()
+    filtered = filtered.filter(
+      (j) =>
+        j.title?.toLowerCase().includes(q) ||
+        j.company_name?.toLowerCase().includes(q) ||
+        j.description?.toLowerCase().includes(q)
+    )
+  }
+
+  if (filters.category) {
+    filtered = filtered.filter(
+      (j) => j.category?.toLowerCase() === filters.category.toLowerCase()
+    )
+  }
+
   if (filters.jobType) {
     filtered = filtered.filter(
-      (j) => j.job_type?.toLowerCase() === filters.jobType
+      (j) => j.job_type?.toLowerCase().replace(/_/g, '-') === filters.jobType
     )
   }
 
@@ -79,50 +99,48 @@ export default function Home() {
   const [location, setLocation] = useState('')
   const [sort, setSort] = useState('date')
 
-  const searchParamsObj = query || category ? { query, category, page } : undefined
-  const { data, isLoading, error } = useJobSearch(searchParamsObj)
-  const rawJobs = data?.jobs || []
-  const totalJobs = data?.total || 0
-  const totalPages = Math.ceil(totalJobs / 10)
+  const { data, isLoading, error } = useJobSearch()
+  const allJobs = data?.jobs || []
 
-  const filters = { jobType, location, sort }
-  const jobs = useMemo(() => applyFilters(rawJobs, filters), [rawJobs, filters])
+  const filters = { query, category, jobType, location, sort }
+  const filtered = useMemo(() => applyFilters(allJobs, filters), [allJobs, filters])
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
+  const jobs = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
-  function handleSearch(e) {
-    e.preventDefault()
+  useEffect(() => {
     setPage(1)
     const params = new URLSearchParams()
     if (query) params.set('q', query)
     if (category) params.set('category', category)
     setSearchParams(params, { replace: true })
-  }
+  }, [query, category, setSearchParams])
 
   return (
     <div>
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">Find your next job</h1>
-        <p className="text-gray-500">Search thousands of remote jobs — free.</p>
+      <div className="sticky top-0 z-10 bg-gray-50 pb-3 mb-4">
+        <div className="flex gap-3 max-w-2xl mx-auto">
+          <div className="flex-1">
+            <Input
+              placeholder="Search jobs..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </div>
+          <div className="w-48">
+            <Select value={category} onChange={(e) => setCategory(e.target.value)}>
+              {categories.map((c) => (
+                <option key={c.value} value={c.value}>{c.label}</option>
+              ))}
+            </Select>
+          </div>
+        </div>
       </div>
 
-      <form onSubmit={handleSearch} className="flex gap-3 max-w-2xl mx-auto mb-6">
-        <div className="flex-1">
-          <Input
-            placeholder="Search jobs..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </div>
-        <div className="w-48">
-          <Select value={category} onChange={(e) => setCategory(e.target.value)}>
-            {categories.map((c) => (
-              <option key={c.value} value={c.value}>{c.label}</option>
-            ))}
-          </Select>
-        </div>
-        <Button type="submit">Search</Button>
-      </form>
+      {allJobs.length > 0 && (
+        <p className="text-sm text-gray-500 mb-2">{filtered.length} job{filtered.length !== 1 ? 's' : ''} found</p>
+      )}
 
-      {(query || category) && (
+      {allJobs.length > 0 && (
         <div className="flex gap-3 mb-6 flex-wrap">
           <div className="w-40">
             <Select value={jobType} onChange={(e) => setJobType(e.target.value)}>
@@ -160,7 +178,7 @@ export default function Home() {
             Previous
           </Button>
           <span className="text-sm text-gray-500">
-            Page {page} of {totalPages}
+            Page {page} of {totalPages} &middot; {(page - 1) * PAGE_SIZE + 1}&ndash;{Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length} displayed
           </span>
           <Button
             variant="secondary"
