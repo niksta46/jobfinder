@@ -60,12 +60,19 @@ Tracks **current status** of the job search website project.
   * Sticky search bar + smaller hero text, moved tagline to navbar
   * Fixed navbar with color polish
   * Clickable job cards with hover effects
+* Phase 5: Job Details Page ✅
+  * Full job description display with HTML rendering
+  * Company info section (name, location, salary, date, category)
+  * Apply button (links to external posting)
+  * Related jobs section (same category)
+  * Loading, error, and not-found states
+  * Job cards link to internal details page instead of external URL
 
 ---
 
 ## Pending Tasks
 
-* Phase 5–8: See ROADMAP.md
+* Phase 6–8: See ROADMAP.md
 
 ---
 

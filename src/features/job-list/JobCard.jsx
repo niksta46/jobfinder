@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Card from '../../ui/common/Card'
 import Badge from '../../ui/common/Badge'
 
@@ -10,13 +11,11 @@ const jobTypeVariant = {
 }
 
 export default function JobCard({ job }) {
-  const { title, company_name, candidate_required_location, salary, job_type, url } = job
+  const { id, title, company_name, candidate_required_location, salary, job_type } = job
 
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to={`/jobs/${id}`}
       className="block cursor-pointer"
     >
       <Card className="transition-all hover:shadow-lg hover:border-primary-200 hover:-translate-y-0.5 hover:bg-primary-50 border-l-4 border-transparent hover:border-primary-400">
@@ -40,6 +39,6 @@ export default function JobCard({ job }) {
           </div>
         </div>
       </Card>
-    </a>
+    </Link>
   )
 }
