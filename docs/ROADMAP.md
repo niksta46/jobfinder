@@ -93,10 +93,10 @@ Polish search UX based on user feedback.
 
 ### Tasks
 
-- [ ] Remove Search button — auto-filter on category/input change
-- [ ] Remove "Search" link from header nav (keep only Saved)
-- [ ] Show total job count + "X / Y displayed" in pagination
-- [ ] Sticky search bar + smaller hero text to reclaim space
+- [x] Remove Search button — auto-filter on category/input change
+- [x] Remove "Search" link from header nav (keep only Saved)
+- [x] Show total job count + "X / Y displayed" in pagination
+- [x] Sticky search bar + smaller hero text to reclaim space
 
 ---
 

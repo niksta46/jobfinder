@@ -53,16 +53,18 @@ Tracks **current status** of the job search website project.
   * Sort options (date, relevance, salary)
   * Pagination (10 per page)
   * Empty state
+* Phase 4.1: UX Improvements ✅
+  * Remove Search button — auto-filter on category/input change
+  * Remove "Search" link from header nav
+  * Show total job count + "X / Y displayed" in pagination
+  * Sticky search bar + smaller hero text, moved tagline to navbar
+  * Fixed navbar with color polish
+  * Clickable job cards with hover effects
 
 ---
 
 ## Pending Tasks
 
-* Phase 4.1: UX Improvements
-  * Remove Search button — auto-filter on category/input change
-  * Remove "Search" link from header nav
-  * Show total job count + "X / Y displayed" in pagination
-  * Sticky search bar + smaller hero text
 * Phase 5–8: See ROADMAP.md
 
 ---
