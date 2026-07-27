@@ -131,23 +131,7 @@ Allow users to save jobs for later.
 
 ---
 
-## Phase 7: Advanced Features
-
-### Goal
-
-Add polish and advanced filtering.
-
-### Tasks
-
-- [ ] Salary range filter (if data available)
-- [ ] Remote vs on-site toggle
-- [ ] Keyword highlight in results
-- [ ] Recent searches in localStorage
-- [ ] Debounced search input
-
----
-
-## Phase 8: UI Polish & Responsive Design
+## Phase 7: UI Polish & Responsive Design
 
 ### Goal
 
@@ -155,10 +139,10 @@ Ensure professional look across all devices.
 
 ### Tasks
 
-- [ ] Responsive layout (mobile, tablet, desktop)
-- [ ] Loading skeletons for job cards
-- [ ] Smooth transitions and animations
-- [ ] Dark mode toggle (optional)
+- [x] Responsive layout (mobile, tablet, desktop)
+- [x] Loading skeletons for job cards
+- [x] Smooth transitions and animations
+- [x] Dark mode toggle (optional)
 
 ---
 

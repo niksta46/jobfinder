@@ -1,6 +1,6 @@
 export default function ErrorMessage({ message = 'Something went wrong.', className = '' }) {
   return (
-    <div className={`bg-red-50 border border-red-200 text-red-600 rounded-lg p-4 ${className}`}>
+    <div className={`bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 rounded-lg p-4 ${className}`}>
       {message}
     </div>
   )

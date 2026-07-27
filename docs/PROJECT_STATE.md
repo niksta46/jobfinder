@@ -75,9 +75,17 @@ Tracks **current status** of the job search website project.
 
 ---
 
-## Pending Tasks
+## Completed Tasks (cont.)
 
-* Phase 7–8: See ROADMAP.md
+* Phase 7: UI Polish & Responsive Design ✅
+  * Responsive layout (header, filters, cards, details, saved)
+  * Loading skeletons for job cards
+  * Smooth transitions and animations (fade-in-up, staggered)
+  * Dark mode toggle with localStorage persistence
+
+---
+
+## Pending Tasks
 
 ---
 

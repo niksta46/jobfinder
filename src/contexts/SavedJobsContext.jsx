@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 
 const STORAGE_KEY = 'savedJobs'
 
@@ -11,7 +11,9 @@ function loadSaved() {
   }
 }
 
-export function useSavedJobs() {
+const SavedJobsContext = createContext(null)
+
+export function SavedJobsProvider({ children }) {
   const [savedJobs, setSavedJobs] = useState(loadSaved)
 
   useEffect(() => {
@@ -33,5 +35,17 @@ export function useSavedJobs() {
     })
   }, [])
 
-  return { savedJobs, isSaved, toggleSave }
+  return (
+    <SavedJobsContext.Provider value={{ savedJobs, isSaved, toggleSave }}>
+      {children}
+    </SavedJobsContext.Provider>
+  )
+}
+
+export function useSavedJobs() {
+  const ctx = useContext(SavedJobsContext)
+  if (!ctx) {
+    throw new Error('useSavedJobs must be used within SavedJobsProvider')
+  }
+  return ctx
 }

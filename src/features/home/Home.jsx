@@ -117,8 +117,8 @@ export default function Home() {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 bg-gray-50 pb-3 mb-4">
-        <div className="flex gap-3 max-w-2xl mx-auto">
+      <div className="sticky top-0 z-10 bg-gray-50 dark:bg-gray-900 pb-3 mb-4 -mx-4 sm:-mx-6 px-4 sm:px-6 transition-colors">
+        <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
           <div className="flex-1">
             <Input
               placeholder="Search jobs..."
@@ -126,7 +126,7 @@ export default function Home() {
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
-          <div className="w-48">
+          <div className="w-full sm:w-48">
             <Select value={category} onChange={(e) => setCategory(e.target.value)}>
               {categories.map((c) => (
                 <option key={c.value} value={c.value}>{c.label}</option>
@@ -137,26 +137,26 @@ export default function Home() {
       </div>
 
       {allJobs.length > 0 && (
-        <p className="text-sm text-gray-500 mb-2">{filtered.length} job{filtered.length !== 1 ? 's' : ''} found</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{filtered.length} job{filtered.length !== 1 ? 's' : ''} found</p>
       )}
 
       {allJobs.length > 0 && (
-        <div className="flex gap-3 mb-6 flex-wrap">
-          <div className="w-40">
+        <div className="flex flex-col sm:flex-row gap-3 mb-6">
+          <div className="w-full sm:w-40">
             <Select value={jobType} onChange={(e) => setJobType(e.target.value)}>
               {jobTypes.map((t) => (
                 <option key={t.value} value={t.value}>{t.label}</option>
               ))}
             </Select>
           </div>
-          <div className="w-44">
+          <div className="w-full sm:w-44">
             <Input
               placeholder="Filter by location..."
               value={location}
               onChange={(e) => setLocation(e.target.value)}
             />
           </div>
-          <div className="w-44">
+          <div className="w-full sm:w-44">
             <Select value={sort} onChange={(e) => setSort(e.target.value)}>
               {sortOptions.map((s) => (
                 <option key={s.value} value={s.value}>{s.label}</option>
@@ -169,7 +169,7 @@ export default function Home() {
       <JobList jobs={jobs} isLoading={isLoading} error={error} />
 
       {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-4 mt-8">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-8">
           <Button
             variant="secondary"
             disabled={page <= 1}
@@ -177,7 +177,7 @@ export default function Home() {
           >
             Previous
           </Button>
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-gray-500 dark:text-gray-400 order-first sm:order-none">
             Page {page} of {totalPages} &middot; {(page - 1) * PAGE_SIZE + 1}&ndash;{Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length} displayed
           </span>
           <Button
