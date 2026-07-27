@@ -9,7 +9,13 @@ export default function Layout() {
       <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm fixed top-0 left-0 right-0 z-20 transition-colors">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <a href="/" className="text-xl font-bold text-primary-500 shrink-0">JobFinder</a>
+            <a href="/" className="flex items-center gap-2 text-xl font-bold text-primary-500 shrink-0">
+              <svg className="w-6 h-6" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="14" cy="14" r="9" stroke="currentColor" strokeWidth="3"/>
+                <line x1="20.5" y1="20.5" x2="28" y2="28" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+              </svg>
+              JobFinder
+            </a>
             <span className="hidden md:block text-sm text-gray-400 dark:text-gray-500 border-l border-gray-200 dark:border-gray-700 pl-3">Find your next job</span>
           </div>
           <nav className="flex items-center gap-3 sm:gap-4">
