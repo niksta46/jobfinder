@@ -67,12 +67,17 @@ Tracks **current status** of the job search website project.
   * Related jobs section (same category)
   * Loading, error, and not-found states
   * Job cards link to internal details page instead of external URL
+* Phase 6: Saved / Bookmarked Jobs ✅
+  * Save/unsave button on job cards and details
+  * localStorage persistence via useSavedJobs hook
+  * Saved jobs page with list view and unsave
+  * Empty state for no saved jobs
 
 ---
 
 ## Pending Tasks
 
-* Phase 6–8: See ROADMAP.md
+* Phase 7–8: See ROADMAP.md
 
 ---
 

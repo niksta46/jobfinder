@@ -124,10 +124,10 @@ Allow users to save jobs for later.
 
 ### Tasks
 
-- [ ] Save/unsave button on job cards and details
-- [ ] localStorage persistence
-- [ ] Saved jobs page with list view
-- [ ] Empty state for no saved jobs
+- [x] Save/unsave button on job cards and details
+- [x] localStorage persistence
+- [x] Saved jobs page with list view
+- [x] Empty state for no saved jobs
 
 ---
 

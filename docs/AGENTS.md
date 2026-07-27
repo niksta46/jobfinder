@@ -222,18 +222,22 @@ Agents must respect this separation at all times.
 
 ---
 
-## Automation for Task Completion
+## Phase Completion Workflow
 
-When a task is completed, the agent will:
+When a phase is completed, the agent will:
 
-- Ask the user: "Do you believe this task has been completed?"
-  - If user answers "yes", proceed with automation
-  - If user answers "no", wait for further instructions
+1. Ask the user: "Do you believe this phase is done?"
+   - If "yes" → proceed
+   - If "no" → wait for instructions
 
-- Update PROJECT_STATE.md:
-  - Write down the completed task(s) at the corresponding phase
-  - Add ✅ tick at the completed task(s)
+2. Update PROJECT_STATE.md:
+   - Write down the completed task(s) at the corresponding phase
+   - Add ✅ tick at the completed task(s)
 
-- Update ROADMAP.md:
-  - Add ✅ tick at the completed task(s) in the corresponding phase
-  - Delete completed task(s) from the "Core Tasks" section in Phase 11
+3. Update ROADMAP.md:
+   - Add ✅ tick at the completed task(s) in the corresponding phase
+
+4. **Ask the user**: "Do you want me to commit and push these changes?"
+   - If "yes" → git add, commit, push
+   - If "no" → stop
+   - ⚠️ Agent must ALWAYS ask before committing/pushing. Never auto-commit.

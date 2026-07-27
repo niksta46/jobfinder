@@ -3,6 +3,8 @@ import { useJobSearch } from '../../api/endpoints/useJobSearch'
 import Loading from '../../ui/common/Loading'
 import ErrorMessage from '../../ui/common/ErrorMessage'
 import Badge from '../../ui/common/Badge'
+import Button from '../../ui/common/Button'
+import { useSavedJobs } from '../../hooks/useSavedJobs'
 
 const jobTypeVariant = {
   'full-time': 'success',
@@ -25,8 +27,10 @@ export default function JobDetails() {
   const { id } = useParams()
   const { data, isLoading, error } = useJobSearch()
   const allJobs = data?.jobs || []
+  const { isSaved, toggleSave } = useSavedJobs()
 
   const job = allJobs.find((j) => String(j.id) === id)
+  const saved = job && isSaved(job.id)
 
   if (isLoading) return <Loading />
   if (error) return <ErrorMessage message={error.message} />
@@ -62,14 +66,22 @@ export default function JobDetails() {
           {job.category && <span>&#128194; {job.category}</span>}
         </div>
 
-        <a
-          href={job.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-primary-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-600 transition-colors mb-6"
-        >
-          Apply Now &rarr;
-        </a>
+        <div className="flex items-center gap-3 mb-6">
+          <a
+            href={job.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-primary-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-600 transition-colors"
+          >
+            Apply Now &rarr;
+          </a>
+          <Button
+            variant={saved ? 'primary' : 'secondary'}
+            onClick={() => toggleSave(job)}
+          >
+            {saved ? 'Saved' : 'Save'}
+          </Button>
+        </div>
 
         <div>
           <h2 className="text-lg font-semibold text-gray-800 mb-2">Job Description</h2>
